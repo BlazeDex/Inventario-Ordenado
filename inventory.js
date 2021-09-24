@@ -13,12 +13,11 @@ export default class Inventory {
             if(pos) {  
                 return false;         
             } else {
-                this._products.push(product);
-                this._organizeInventory();  
+                this._products.push(product);      
                 return true; 
             }
         } else {
-            return -1;
+            return null;
         }    
     }  
     

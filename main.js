@@ -50,16 +50,15 @@ class App {
         if(!this._inventory.add(product)) {
             details.innerHTML += 
             '<h4>Este producto ya está registrado.</h4>';
-        }else if(this._inventory.add(product) === -1) {
+        }else if(this._inventory.add(product) === null) {
             details.innerHTML += 
            '<h4>El inventario ha alcanzado el límite de productos.</h4>';               
        } else if(this._inventory._getLength() < 20){
            this._inventory.add(product);
+           this._inventory._organizeInventory();
            details.innerHTML += 
            `<h4>Se agregó el producto ${product.getCode()}.</h4>`;                                                     
-       }
-        
-        
+       }    
         console.log(this._inventory._getLength());    
     }
 
@@ -110,7 +109,6 @@ class App {
             '<div class="card"><h4>Producto encontrado</h4>' + 
             product.dataHtml() + '<div>';    
         }
-        
     }
 
     // Función para enlistar los productos por orden de entrada //
@@ -126,8 +124,7 @@ class App {
             this._showTable();
             details.innerHTML += `<h4>Lista predeterminada.</h4>`;               
         }   
-        console.log(list)
-           
+        console.log(list)       
     }
 
     // Función que invierte la lista de los productos //
